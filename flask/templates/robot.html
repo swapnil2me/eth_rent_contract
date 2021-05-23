@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/airy.ico') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style-robot.css') }}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div id="ammount">
+          <p id="currBal">{{ "%.2f"|format(balance) }} aries</p>
+          <p>cost per move: 1 airy</p>
+        </div>
+        <div class="" id="joystick">
+          <div id="joystick_name">
+            <p style="color: #05386b;">Joystick</p>
+          </div>
+          <div class="controlButton" id="fwd">
+              <a href="#" style="text-decoration:none;"><h4><section>  </section> </h4></a>
+          </div>
+          <div class="controlButton" id="right">
+              <a href="#" style="text-decoration:none;"><h4><section>  </section> </h4></a>
+          </div>
+          <div class="controlButton" id="left">
+              <a href="#" style="text-decoration:none;"><h4><section>  </section> </h4></a>
+          </div>
+          <div class="controlButton" id="back">
+              <a href="#" style="text-decoration:none;"><h4><section>  </section> </h4></a>
+          </div>
+          <div class="controlButton" id="stop">
+              <a href="#" style="text-decoration:none;"><h4><section>  </section> </h4></a>
+          </div>
+        </div>
+
+        <a   class="tile"  id="div_back" href="/rent" style="text-decoration:none;"><div> <p><section> Back </section> </p> </div></a>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var fwdButton = document.getElementById('fwd');
+    var leftButton = document.getElementById('left');
+    var rightButton = document.getElementById('right');
+    var backButton = document.getElementById('back');
+    var stopButton = document.getElementById('stop');
+    var currBal = document.getElementById('currBal');
+
+    fwdButton.addEventListener('click',()=>{
+      console.log("fwd");
+      sendCommand('1');
+    })
+
+    leftButton.addEventListener('click',()=>{
+      console.log("left");
+      sendCommand('3');
+    })
+
+    rightButton.addEventListener('click',()=>{
+      console.log("right");
+      sendCommand('2');
+    })
+
+    backButton.addEventListener('click',()=>{
+      console.log("back");
+      sendCommand('4');
+    })
+
+    stopButton.addEventListener('click',()=>{
+      console.log("stop");
+      sendCommand('5');
+    })
+
+
+    function sendCommand(c) {
+        const sendPost = async () => {
+           const url = '/runRobot/'+c; // the URL to send the HTTP request to
+           const method = 'POST';
+           const response = await fetch(url, { method });
+           const data = await response.text(); // or response.json() if your server returns JSON
+           console.log(data);
+           currBal.innerHTML = String(Number(data).toFixed(2)) + " aries"
+
+        }
+
+        sendPost();
+    }
+
+
+  </script>
+</html>

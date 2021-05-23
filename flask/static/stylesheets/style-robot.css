@@ -1,0 +1,144 @@
+
+body {
+    background-color: #FAFAFA;
+    margin: 0 auto;
+
+    max-width: 728px;
+    max-height: 1024px;
+
+    font-family: 'Montserrat';
+    font-size: 22;
+}
+
+h1, h3, p {
+    color: #212121;
+}
+
+
+.wrapper {
+    background-color: #5cdb95;
+    background-image: linear-gradient(190deg, #f7eaa2, #5cdb95 100%);
+    height: 670px;
+}
+
+.container {
+    /* background-color: #abdda49c; */
+    display: grid;
+    grid-template-columns: 1% 1% 25% 46% 25% 1% 1%;
+    /* grid-row-gap: 1px; */
+    /* grid-column-gap: 5px; */
+    width: 310px;
+    height: 650px;
+    margin: auto;
+    /* border: 2px solid rgb(104, 240, 233);
+    border-radius: 5px; */
+    align-items: center;
+    justify-content: center;
+}
+
+
+#div_back {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    text-align: center;
+    height: 50px;
+    width: 130px;
+
+    border: 2px solid #05386b;
+    border-radius: 25px;
+    margin: 0 auto;
+
+}
+
+#ammount {
+  background-color: #2c7a6a2c;
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: center;
+  /* height: 250px; */
+  width: 250px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+#joystick {
+  background-color: #2c7a6a2c;
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  text-align: center;
+  height: 250px;
+  width: 250px;
+  border-radius: 5px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+#joystick_name {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row: 1;
+}
+
+.controlButton {
+  background-color: #2c7a6a9e;
+  width: 50px;
+  height: 40px;
+  margin: auto;
+  /* margin-top: 50px; */
+  clip-path: polygon(00% 0%, 50% 0%, 100% 48%, 100% 52%, 50% 100%, 0% 100%);
+}
+
+#fwd {
+  grid-column: 3;
+  grid-row:2;
+  transform: rotate(270deg);
+}
+
+#left {
+  grid-column: 2;
+  grid-row:3;
+  transform: rotate(180deg);
+}
+
+#right {
+  grid-column: 4;
+  grid-row:3;
+
+}
+
+#back {
+  grid-column: 3;
+  grid-row:4;
+  transform: rotate(90deg);
+}
+#stop {
+  grid-column: 3;
+  grid-row:3;
+  clip-path: polygon(00% 0%, 100% 0%, 100% 100%, 0% 100%);
+  width: 40px;
+
+
+}
+
+
+section {
+    color: #05386b;
+}
+
+
+.tile {
+    background-color: #379683;
+
+}

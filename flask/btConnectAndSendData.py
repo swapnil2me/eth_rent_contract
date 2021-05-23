@@ -1,5 +1,6 @@
 import bluetooth
 # https://github.com/huberf/Computer-to-Arduino-Bluetooth/blob/master/LightGUI.py
+# nearby_devices = bluetooth.discover_devices()
 bd_addr = '00:20:10:08:19:FF'
 sock = bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 sock.connect((bd_addr, 1))

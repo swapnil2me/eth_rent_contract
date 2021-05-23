@@ -10,6 +10,9 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, Float, DateTime, Time
 from flask_marshmallow import Marshmallow
 
+import bluetooth
+
+
 app = Flask(__name__)
 qrcode = QRcode(app)
 app.config["SESSION_PERMANENT"] = False
@@ -20,14 +23,21 @@ app.secret_key = 'super secret key'
 ganache_url = "HTTP://192.168.0.104:7545"
 web3 = Web3(Web3.HTTPProvider(ganache_url))
 
-
-### sqlite DB settings
-dataLocation = '/mnt/5a576321-1b84-46e6-ba92-46de6b117d92/Dump'
+## sqlite DB settings
+# dataLocation = '/mnt/5a576321-1b84-46e6-ba92-46de6b117d92/Dump'
+dataLocation = 'D:\GitHub\eth_rent_contract\\flask\database'
 DB_URL = 'sqlite:///'+os.path.join(dataLocation, 'database.db')
+
+## bluetooth settings
+bd_addr = '00:20:10:08:19:FF'
+sock = bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+sock.connect((bd_addr, 1))
+print("Bluetooth connected")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
+
 
 class LoginTable(db.Model):
     __tablename__ = 'login'
@@ -35,6 +45,7 @@ class LoginTable(db.Model):
     username = Column(String)
     hexId = Column(String)
     privateKey = Column(String)
+
 
 class LoginTableSchema(ma.Schema):
     class Meta:
@@ -153,6 +164,56 @@ def rent():
     return render_template('rent.html')
 
 
+@app.route('/robot')
+def robot():
+    data = request.args.get("data", "")
+    table = LoginTable.query.all()
+    result = login_table_schema.dump(table)
+    user = session.get("name")
+    pk = [result[i]['privateKey'] for i in range(len(result)) if result[i]['username']==user]
+    hi = [result[i]['hexId'] for i in range(len(result)) if result[i]['username']==user]
+    balance = (web3.eth.get_balance(hi[0]))*1e-18
+    return render_template('robot.html', balance = balance)
+
+
+@app.route("/runRobot/<c>", methods=['POST'])
+def rubRobot(c):
+    if request.method == 'POST':
+        data = request.args.get("data", "")
+        table = LoginTable.query.all()
+        result = login_table_schema.dump(table)
+        user = session.get("name")
+        pk = [result[i]['privateKey'] for i in range(len(result)) if result[i]['username']==user]
+        hi = [result[i]['hexId'] for i in range(len(result)) if result[i]['username']==user]
+
+        account_to = '0xb0e33FD9c0887602F35D98fa63a03a8A87A7cF14'
+        # print(hi)
+        account_from = hi[0]
+        pk = pk[0]
+
+        nonce = web3.eth.getTransactionCount(account_from)
+
+        tx = {
+            'nonce': nonce,
+            'from':account_from,
+            'to': account_to,
+            'value': web3.toWei(1,'ether'),
+            'gas': 2000000,
+            'gasPrice': web3.toWei('50','gwei')
+            }
+        # print(tx)
+        signed_tx = web3.eth.account.signTransaction(tx, pk)
+        tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
+        print(tx_hash)
+        print("awaiting receipt")
+        receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
+        print("receipt: ")
+        balance = (web3.eth.get_balance(hi[0]))*1e-18
+        sock.send(str(c))
+        print(balance)
+        return jsonify(balance)
+
+
 @app.route("/qrcode", methods=["GET"])
 def get_qrcode():
     # please get /qrcode?data=<qrcode_data>
@@ -160,10 +221,5 @@ def get_qrcode():
     return send_file(qrcode(data, mode="raw"), mimetype="image/png")
 
 
-ASSETS_DIR = os.path.dirname(os.path.abspath(__file__))
-
 if __name__ == '__main__':
-    # context = ('server.crt', 'server.key')
-    # app.run(host='10.217.77.128',port=8000, debug=True, ssl_context=context)
-    app.run(port=8080,debug=True)
-    # app.run(host='192.168.0.103',port=8080, debug=True)
+    app.run(host = "192.168.0.103", port = "8080", debug=True)

@@ -63,9 +63,9 @@ h1, h3, p {
 }
 
 #ammount {
-    background-color: #05386b;
+    background-color: #2c7a6a9e;
     border: 2px solid #05386b;
-    border-radius: 8px;
+    border-radius: 25px 25px 25px 5px;
     width: 150px;
     margin: auto;
     margin-top: 50px;
@@ -76,7 +76,7 @@ h1, h3, p {
 
 
 section {
-    color: wheat;
+    color: #05386b;
 }
 
 @keyframes nudge {
@@ -84,11 +84,16 @@ section {
     transform: translate(0, 0);
   }
 
-  50% {
+  33% {
     transform: translate(0px, 5px);
   }
 
-  80% {
-    transform: translate(00px, -5px);
+  66% {
+    transform: translate(0px, -8px);
   }
+}
+
+.tile {
+    background-color: #379683;
+
 }
