@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZokaDe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style-receive.css') }}">
+    <!-- <script src="html5-qrcode.min.js"></script> -->
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="container">
+            <div id="header">
+                <a id="logo" href="https://airyzoka.github.io">
+                    <img src="{{ url_for('static',filename='img/airy.png') }}" alt="">
+                </a>
+                <div id="ammount">
+                    <p class="force">current balance:</p>
+                    <h3 class="force">{{ "%.2f"|format(balance) }} <section> airys </section> </h3>
+                </div>
+            </div>
+            <div class="tile" id="qrcode"> 
+                <img src="{{ qrcode(hexId) }} ">
+            </div>
+            <a   class="tile"  id="div_receive" href="/receive" style="text-decoration:none;"><div> <p class="whitetext">refresh</p> </div></a>
+            <a   class="tile"  id="div_pay" href="/" style="text-decoration:none;"><div> <p class="whitetext">home</p> </div></a>
+            
+            <div id="hexId"> <section> {{ hexId }} </section></div></a>
+        </div>
+    </div>
+
+    
+
+    
+
+</body>
+</html>

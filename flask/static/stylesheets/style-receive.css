@@ -1,0 +1,148 @@
+
+body {
+    background-color: #FAFAFA;
+    margin: 0 auto;
+
+    max-width: 728px;
+    max-height: 1024px;
+    
+    font-family: 'Montserrat';
+    font-size: 22;
+}
+
+h1, h3, p {
+    color: rgb(3, 3, 3);
+    /* margin: auto; */
+}
+
+img {
+    padding: 20px 110px;
+    height: 100px;
+    width: 86px;
+}
+
+.tile > img {
+    padding: 5px;
+    height: 250px;
+    width: 250px;
+}
+
+
+.wrapper {
+    background-image: linear-gradient(190deg, #f7eaa2, #5cdb95 100%);
+    height: 670px;
+
+}
+
+.container {
+    /* background-color: #FFF; */
+    display: grid;
+    grid-template-columns: 1% 1% 48% 48% 1% 1%;
+    /* grid-row-gap: 1px; */
+    /* grid-column-gap: 5px; */
+    width: 310px;
+    height: 650px;
+    margin: auto;
+    /* border: 2px solid rgb(104, 240, 233); */
+    border-radius: 5px;
+}
+
+.tile {
+    /* background-color: #fff; */
+    
+}
+
+#header{
+    /* background-color: #FFF; */
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 200px;
+
+}
+
+#qrcode {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    text-align: center;
+    /* width: 260px; */
+    height: 260px;
+    /* border: 2px solid rgb(104, 240, 233);
+    border-radius: 5px; */
+}
+
+#ammount {
+    background-color: rgba(0, 128, 128, 0.329);
+    border: 2px solid #05386b;
+    border-radius: 8px;
+    width: 150px;
+    /* height: 100px; */
+
+    margin: auto;
+    text-align: center;
+}
+
+.force {
+    margin: auto;
+}
+
+section{
+    font-size: small;
+}
+
+#hexId {
+    background-color: rgba(0, 128, 128, 0.329);
+
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    text-align: center;
+    overflow-wrap: break-word;
+    /* border: 2px solid rgb(104, 240, 233); */
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px;
+}
+
+#div_receive {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    text-align: center;
+    height: 50px;
+    width: 130px;
+    background-color: #379683;
+
+    border: 2px solid #05386b;
+    border-radius: 25px;
+    margin: 0 auto;
+}
+
+#div_pay {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    text-align: center;
+    height: 50px;
+    width: 130px;
+    background-color: #379683;
+
+    border: 2px solid #05386b;
+    border-radius: 25px;
+    margin: 0 auto;
+
+}
+
+h3, section, p {
+    color: #05386b;
+}
+
+.whitetext {
+    color: rgb(253, 242, 218);
+} 

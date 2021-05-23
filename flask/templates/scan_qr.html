@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZokaDe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+    <script src=                "{{ url_for('static', filename='js/html5-qrcode.min.js') }}"></script>
+    <!-- <script src="html5-qrcode.min.js"></script> -->
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="container">
+            <div id="header">
+                <div id="balance">
+                    <p class="force">current balance:</p>
+                    <h3 class="force">{{ "%.2f"|format(balance) }} <section> airys </section> </h3>
+                </div>
+            </div>
+            <div class="tile" id="reader"></div>
+            <div id="scan"> <p class="whitetext">Scan</p> </div>
+            <div id="ammount">
+                <div id="am1"><p >Pay</p></div>
+                <div id="am2" ><input type="number" value="0" id="airies"></div>
+                <div id="am3"><p>airies to:</p></div>
+            </div>
+            <div id="hexId"> <section id="qr_msg">(no recipient) </section></div></a>
+            <a  id="homebutton" href="/" style="text-decoration:none;"><div> <p class="whitetext">home</p> </div></a>
+            
+            <a  id="payment_link" href="/scan_qr" style="text-decoration:none;"> <div ><p class="whitetext">Pay</p> </div></a>
+        </div>
+    </div>
+
+</body>
+<script>
+    // This method will trigger user permissions
+    var div_reader = document.getElementById('reader');
+    var div_scan_button = document.getElementById('scan');
+    var div_qr_msg = document.getElementById('qr_msg');
+    var div_post_qr = document.getElementById('post_div');
+    var div_pay_href = document.getElementById('payment_link');
+    div_pay_href.style.pointerEvents = 'none';
+    var ammount = document.getElementById('airies')
+    var hexId;
+    div_scan_button.addEventListener('click', function(){
+        div_scan_button.innerHTML = "<p>...</p>"
+        Html5Qrcode.getCameras().then(devices => {
+            if (devices && devices.length) {
+                var cameraId = devices[0].id;
+                // .. use this to start scanning.
+                const html5QrCode = new Html5Qrcode("reader");
+                const qrCodeSuccessCallback = message => { 
+                    console.log(message);
+                    hexId = message;
+                    div_qr_msg.innerHTML = 'pay to:' + message;
+                    ammount.onchange()
+                    div_pay_href.style.pointerEvents = 'auto';
+
+                    
+                    html5QrCode.stop().then(ignore => {
+
+                        div_reader.innerHTML = ""
+                        div_scan_button.innerHTML = "<p>Scan again</p>"
+                        }).catch(err => {
+                        // Stop failed, handle it.
+                        div_scan_button.innerHTML = "<p>error in scan, try again...</p>"
+                        });
+                    }
+                const config = { fps: 10, qrbox: 250 };
+                // If you want to prefer back camera
+                html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+            }
+        }).catch(err => {
+        // handle err
+        div_scan_button.innerHTML = "error in scan, try again...";
+        console.log(err);
+        });
+    });
+
+    ammount.onchange = function(){
+        div_pay_href.href = `/pay_qr/${hexId}/${parseInt(ammount.value)}`;
+        console.log(`/pay_qr/${hexId}/${parseInt(ammount.value)}`);
+    }
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZokaDe</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/airy.ico') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style-index.css') }}">
+    <script src=                "{{ url_for('static', filename='js/html5-qrcode.min.js') }}"></script>
+    <!-- <script src="html5-qrcode.min.js"></script> -->
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="container">
+            <div id="header">
+                <a id="logo" href="https://airyzoka.github.io" >
+                    <img src="{{ url_for('static',filename='img/airy.png') }}" alt="">
+                </a>
+            </div>
+            <div class="tile" id="username">
+                <h1>{{ user }}</h1>
+                <p>current balance:</p>
+                <div id="ammount">
+                    <h3>{{ "%.2f"|format(balance) }} <section> airys </section> </h3>
+                </div>
+            </div>
+            <a   class="tile"  id="div_rent" href="/rent" style="text-decoration:none;"><div> <p>rent assets</p> </div></a>
+            <a   class="tile"  id="div_receive" href="/receive" style="text-decoration:none;"><div> <p>receive</p> </div></a>
+            <a   class="tile"  id="div_pay" href="/scan_qr" style="text-decoration:none;"><div> <p>pay</p> </div></a>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>

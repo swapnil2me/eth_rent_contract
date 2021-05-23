@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ZokaDe</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/airy.ico') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style-login.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="title">
+            <a id="logo" href="https://airyzoka.github.io">
+                <img src="{{ url_for('static',filename='img/airy.png') }}" alt="">
+            </a>
+    
+        </div>
+    
+        <div style="margin: 0 60;">
+    
+            <div class="container">
+                <div id="head">
+                    <h1> Sign in to ZokaDe </h1>
+                </div>
+                <div id="ermsg">
+                    <h2>{{ msg }}</h2>
+                </div>
+                <form  action="/login" id = "login_form" method="POST">
+                    <input id="username" placeholder="Name" autocomplete="off" type="text" name="name">
+                    <input id="submit" type="submit" value="Sign In">
+                </form>
+            </div>
+    
+        </div>
+    </div>
+
+    
+
+
+</body>
+</html>

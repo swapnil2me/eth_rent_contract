@@ -1,0 +1,238 @@
+
+body {
+    background-color: #FAFAFA;
+    margin: 0 auto;
+
+    max-width: 728px;
+    max-height: 1024px;
+    
+    font-family: 'Montserrat';
+    font-size: 22;
+}
+
+h3, section, p {
+    color: #042f5a;
+}
+
+#balance {
+    background-color: rgba(0, 128, 128, 0.329);
+    border: 2px solid #05386b;
+    border-radius: 8px;
+    width: 150px;
+    /* height: 100px; */
+    padding: 10px 0;
+
+    margin: auto;
+    text-align: center;
+}
+
+#balance > p, h3 {
+    margin: 0 auto;
+}
+
+.wrapper {
+    background-image: linear-gradient(190deg, #f7eaa2, #5cdb95 100%);
+
+    height: 667px;
+}
+
+.container {
+    /* background-color: #FFF; */
+    display: grid;
+    grid-template-columns: 1% 1% 48% 48% 1% 1%;
+    /* grid-row-gap: 1px; */
+    /* grid-column-gap: 5px; */
+    width: 310px;
+    height: 650px;
+    margin: auto;
+    /* border: 2px solid rgb(104, 240, 233); */
+    border-radius: 5px;
+    padding-top: 10px;
+}
+
+#header{
+    /* background-color: #FFF; */
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    /* height: 200px; */
+
+}
+
+#reader {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    height: 250px;
+
+    background-color: rgba(0, 128, 128, 0.329);
+    /* border: 2px solid #05386b; */
+    border-radius: 5px;
+}
+
+#scan {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    height: 50px;
+    width: 130px;
+    background-color: #379683;
+
+    border: 2px solid #05386b;
+    border-radius: 25px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+section{
+    font-size: small;
+}
+
+#hexId {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    text-align: center;
+    overflow-wrap: break-word;
+    background-color: rgba(0, 128, 128, 0.144);
+    /* border: 2px solid #05386b3d; */
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px;
+}
+
+#payment_link {
+    /* background-color: royalblue; */
+    
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    height: 50px;
+    /* width: 130px; */
+    background-color: #379683;
+
+    border: 2px solid #05386b;
+    border-radius: 25px;
+    
+
+
+}
+
+a > div {
+    text-align: center;
+}
+
+#homebutton {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    text-align: center;
+    height: 50px;
+    width: 130px;
+
+    background-color: #379683;
+
+    border: 2px solid #05386b;
+    border-radius: 25px;
+    margin: 0 auto;
+
+}
+
+.whitetext {
+    color: rgb(253, 242, 218);
+} 
+
+input[type=number], select {
+    width: 100%;
+    height: 100%;
+    padding: 0px 20px;
+    /* margin: 8px 0; */
+    display: inline-block;
+    background-color: rgba(228, 223, 222, 0.473);
+
+    border: 2px solid #70a770;
+    border-radius: 10px;
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+  }
+
+#ammount {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    width: 295px;
+    display: grid;
+    grid-template-columns: auto 50% auto;
+}
+
+#am1 {
+    /* width: 90px; */
+    height: 50px;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#am2 {
+    /* width: 90px; */
+    height: 50px;
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#am3 {
+    /* width: 90px; */
+    height: 50px;
+    text-align: center;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+#username {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    /* width: 150px; */
+}
+
+#div_receive {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    /* width: 75px; */
+}
+
+#div_pay {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#hexQR {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
